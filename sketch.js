@@ -15,13 +15,15 @@ function preload() {
   eImg = loadImage("img/ene.png");
 }
 
-function mousePressed() {
-  enemies.push(new Enemy());
-}
+
 
 function setup() {
   createCanvas(800, 450);
-  fairy = new Fairy();
+  fairy = new Fairy({
+    initialCords: [50, 250],
+    radius: 150,
+    gravity: 2,
+  });
   soundClassifier.classify(gotCommand);
 }
 
@@ -43,13 +45,13 @@ function keyPressed() {
 
 function draw() {
   if (random(1) < 0.005) {
-    enemies.push(new Enemy());
+     enemies.push(new Enemy());
   }
   background(bImg);
   for (let e of enemies) {
     e.move();
     e.show();
-    if (fairy.hits(e)) {
+    if (fairy.isHits(e)) {
       console.log("game over");
       noLoop();
     }

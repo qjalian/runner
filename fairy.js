@@ -1,18 +1,21 @@
+const MAX_HEIGHT = 250;
+const MIN_HEIGHT = 0;
+
 class Fairy {
-  constructor() {
-    this.r = 150;
-    this.x = 50;
-    this.y = height - 250;
-    this.vy = 0;
-    this.gravity = 2;
-  }
-  jump() {
-    if (this.y == height - 250) {
-      this.vy = -25;
-    }
+  constructor({ initialCords, gravity, radius }) {
+    this.r = radius;
+    this.x = initialCords[0];
+    this.y = initialCords[1];
+
+    this.gravity = gravity;
+    this.isUp = false;
   }
 
-  hits(enemy) {
+  jump() {
+    this.isUp = true;
+  }
+
+  isHits(enemy) {
     let x1 = this.x + this.r * 0.5;
     let y1 = this.y + this.r * 0.5;
     let x2 = enemy.x + enemy.r * 0.5;
@@ -21,9 +24,19 @@ class Fairy {
   }
 
   move() {
-    this.y += this.vy;
-    this.vy += this.gravity;
-    this.y = constrain(this.y, 0, height - 250);
+    if (this.y <= MIN_HEIGHT) {
+      this.isUp = false;
+    }
+
+    if (this.y >= MAX_HEIGHT) {
+      this.y = MAX_HEIGHT;
+    }
+
+    if (this.isUp) {
+      this.y -= this.gravity;
+    } else {
+      this.y += this.gravity;
+    }
   }
 
   show() {
