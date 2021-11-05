@@ -1,11 +1,9 @@
-const MAX_HEIGHT = 250;
-const MIN_HEIGHT = 0;
-
 class Fairy {
-  constructor({ initialCords, gravity, radius }) {
+  constructor({ initialCords, gravity, radius, rangeY }) {
     this.r = radius;
     this.x = initialCords[0];
     this.y = initialCords[1];
+    this.rangeY = rangeY;
 
     this.gravity = gravity;
     this.isUp = false;
@@ -24,12 +22,12 @@ class Fairy {
   }
 
   move() {
-    if (this.y <= MIN_HEIGHT) {
+    if (this.y <= this.rangeY[0]) {
       this.isUp = false;
     }
 
-    if (this.y >= MAX_HEIGHT) {
-      this.y = MAX_HEIGHT;
+    if (this.y >= this.rangeY[1]) {
+      this.y = this.rangeY[1];
     }
 
     if (this.isUp) {
