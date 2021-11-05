@@ -3,6 +3,7 @@ let fImg;
 let bImg;
 let eImg;
 let enemies = [];
+let score;
 let soundClassifier;
 
 function preload() {
@@ -18,11 +19,12 @@ function preload() {
 
 
 function setup() {
-  createCanvas(800, 450);
+  createCanvas(window.innerWidth, window.innerHeight);
   fairy = new Fairy({
-    initialCords: [50, 250],
+    initialCords: [50, window.innerHeight],
     radius: 150,
-    gravity: 2,
+    gravity: 10,
+    rangeY: [0, window.innerHeight - 150]
   });
   soundClassifier.classify(gotCommand);
 }
