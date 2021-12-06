@@ -2,25 +2,39 @@
 <html>
   <head>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
-
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js"></script>
     <script src="https://unpkg.com/ml5@0.3.1/dist/ml5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.js"></script>
     <script src="https://cdn.rawgit.com/molleindustria/p5.play/42cd19c3/lib/p5.play.js"></script>
     <meta charset="utf-8" />
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      canvas {
-        display: block;
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fruktur&family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+  
   </head>
   <body>
+    <div class="game">
+      <div class="screen screen_menu">
+      </div>
+  
+      <div class="screen screen_game">
+      </div>
+  
+      <div class="screen screen_game-over">
+        <div class="game-over-menu">
+          <div class="game-over-menu__text">Game Over</div>
+          <a class="game-over-menu__play-again">
+            Play Again!
+        </div>
+      </a>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
     <script src="fairy.js"></script>
     <script src="enemy.js"></script>
     <script src="sketch.js"></script>

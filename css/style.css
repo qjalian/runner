@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+   padding: 0;
+   font-family: 'Fruktur';
+   font-family: 'Love Ya Like A Sister';
+}
+
+canvas {
+   display: block;
+}
+
+.game-over-menu {
+    background-image: url(../img/bgm.jpg);
+    height: 100%;
+    width: 100%;
+}
+
+.game-over-menu__text{
+    font-family: 'Fruktur';
+    font-family: 'Love Ya Like A Sister';
+    font-size: 200px;
+    margin: 0 auto;
+    text-align: center;
+    color: rgb(86, 19, 112);
+}
+
+.game-over-menu__play-again {
+    margin: 0;
+    font-family: 'Fruktur';
+    font-family: 'Love Ya Like A Sister';
+    font-size: 70px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:rgb(243, 193, 30);
+    
+}
+
+.game {
+    max-height: 100vh;
+    max-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.screen {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
+
+.screen_active {
+    z-index: 100;
+    opacity: 1.0;
+}

@@ -1,12 +1,13 @@
 class Enemy {
-  constructor() {
-    this.r = 120;
-    this.x = width;
-    this.y = height - this.r;
+  constructor({initialCords, speed, size}) {
+    this.r = size;
+    this.speed = speed;
+    this.x = initialCords[0];
+    this.y = initialCords[1] - this.r;
   }
 
   move() {
-    this.x -= 7;
+    this.x -= this.speed;
   }
 
   show() {
