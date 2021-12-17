@@ -10,7 +10,10 @@ canvas {
 }
 
 .game-over-menu {
-    background-image: url(../img/bgm.jpg);
+    background: url("../img/bgm.jpg");
+    background-repeat: no-repeat;
+    background-position:center center;
+    background-size:cover;
     height: 100%;
     width: 100%;
 }
@@ -19,9 +22,10 @@ canvas {
     font-family: 'Fruktur';
     font-family: 'Love Ya Like A Sister';
     font-size: 200px;
+   padding: 98px;
     margin: 0 auto;
     text-align: center;
-    color: rgb(86, 19, 112);
+    color: rgb(87, 32, 109);
 }
 
 .game-over-menu__play-again {
@@ -33,8 +37,21 @@ canvas {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color:rgb(243, 193, 30);
+    color:rgb(255, 196, 0);
+    cursor: pointer;
     
+}
+.game-over-menu__score{
+    margin: 0;
+    font-family: 'Fruktur';
+    font-family: 'Love Ya Like A Sister';
+    font-size: 50px;
+    position: absolute;
+    margin-top: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:rgb(40, 29, 134);
 }
 
 .game {

@@ -18,7 +18,7 @@ class Fairy {
     let y1 = this.y + this.r * 0.25;
     let x2 = enemy.x + enemy.r * 0.25;
     let y2 = enemy.y + enemy.r * 0.25;
-    return collideCircleCircle(x1, y1, this.r * 0.5, x2, y2, enemy.r * 0.5);
+    return collideCircleCircle(x1, y1, this.r * 0.5, x2, y2, enemy.r * 0.3);
   }
 
   move() {

@@ -2,14 +2,34 @@ let fairy;
 let fImg;
 let bImg;
 let eImg;
-let endImg;
 let enemies = [];
 let score=0;
-let font;
 let offsetX = 0;
+let scrollSpeed=7;
 let soundClassifier;
 const ENEMY_SIZE = 350;
 const FAIRY_SIZE = 150;
+
+const backgroundAudio = new Audio('./audio/f.mp3');
+
+function playAudio(audio) {
+  audio.play();
+  audio.addEventListener('loadeddata', () => {
+    audio.pause();
+    audio.play();
+  });
+}
+
+function loopAudio(audio) {
+	audio.play()
+	audio.addEventListener('ended', () => {
+		audio.play()
+	})
+}
+
+function stopAudio(audio) {
+  audio.pause();
+}
 
 const screens = document.querySelectorAll('.screen');
 
@@ -30,7 +50,7 @@ playAgainButton.addEventListener('click', () => {
   location.reload();
 });
 
-// config
+
 const BEGIN_SCREEN_INDEX = 1;
 
 setCurrentScreen(BEGIN_SCREEN_INDEX);
@@ -44,10 +64,25 @@ function preload() {
   fImg = loadImage("img/3.gif");
   bImg = loadImage("img/bg_m_1.jpg");
   eImg = loadImage("img/mouse.gif");
-  endImg= loadImage("img/gm.jpg");
+}
+
+const createUserInteractWithDocumentPromise = () => {
+  const userEvents = ['click', 'mousemove', 'keypress'];
+
+  return new Promise((resolve) => {
+    userEvents.forEach((event) => {
+      this.document.addEventListener(event, resolve);
+    });
+  })
+
 }
 
 function setup() {
+  createUserInteractWithDocumentPromise().then(() => {
+    playAudio(backgroundAudio);
+    loopAudio(backgroundAudio);
+  });
+
   const canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.parent(screens[1]);
   fairy = new Fairy({
@@ -74,8 +109,10 @@ function draw() {
        size: ENEMY_SIZE
      }));
   }
+ 
  image(bImg,offsetX, 0, width, height);
  image(bImg,offsetX + width, 0, width, height);
+
 
  offsetX--;
  if(offsetX <= -width){
@@ -85,6 +122,7 @@ function draw() {
     e.move();
     e.show();
     if (fairy.isHits(e)) {
+      stopAudio(backgroundAudio);
       showGameOver();
     }
   }
@@ -101,12 +139,12 @@ function draw() {
 
   fairy.show();
   fairy.move();
-
   showScore();
 }
 
 function showGameOver() {
   setCurrentScreen(2);
+  myfoo2();
   
   noLoop();
 }
@@ -115,6 +153,9 @@ function showScore() {
   fill(45,22,200);
   textSize(20);
   text('SCORE:' + score,20,25);
+}
+function myfoo2(){
+   newvar ="Your score: " + score; isid.innerHTML=newvar ; 
 }
 
 function getVoiceCommand(error, results) {
