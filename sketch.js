@@ -5,7 +5,7 @@ let eImg;
 let enemies = [];
 let score=0;
 let offsetX = 0;
-let scrollSpeed=7;
+let offsetXSpeed = 2;
 let soundClassifier;
 const ENEMY_SIZE = 350;
 const FAIRY_SIZE = 150;
@@ -102,10 +102,10 @@ function keyPressed() {
 
 
 function draw() {
-  if (random(1) < 0.01) {
+  if (random(1) < 0.008) {
      enemies.push(new Enemy({
-       initialCords: [window.innerWidth, random(ENEMY_SIZE, window.innerHeight)],
-       speed: 7,
+       initialCords: [window.innerWidth, random(ENEMY_SIZE, window.innerHeight + ENEMY_SIZE / 2)],
+       speed: 6 + score * 0.2,
        size: ENEMY_SIZE
      }));
   }
@@ -114,7 +114,7 @@ function draw() {
  image(bImg,offsetX + width, 0, width, height);
 
 
- offsetX--;
+ offsetX -= offsetXSpeed;
  if(offsetX <= -width){
   offsetX = 0;	
  }
@@ -131,6 +131,7 @@ function draw() {
   enemies = enemies.filter((enemy) => {
     if (enemy.x < -ENEMY_SIZE) {
       score++;
+      offsetXSpeed += 0.2;
       return false;
     }
 
