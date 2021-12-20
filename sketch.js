@@ -3,53 +3,52 @@ let fImg;
 let bImg;
 let eImg;
 let enemies = [];
-let score=0;
+let score = 0;
 let offsetX = 0;
 let offsetXSpeed = 2;
 let soundClassifier;
 const ENEMY_SIZE = 350;
 const FAIRY_SIZE = 150;
 
-const backgroundAudio = new Audio('./audio/f.mp3');
+const backgroundAudio = new Audio("./audio/f.mp3");
 
 function playAudio(audio) {
   audio.play();
-  audio.addEventListener('loadeddata', () => {
+  audio.addEventListener("loadeddata", () => {
     audio.pause();
     audio.play();
   });
 }
 
 function loopAudio(audio) {
-	audio.play()
-	audio.addEventListener('ended', () => {
-		audio.play()
-	})
+  audio.play();
+  audio.addEventListener("ended", () => {
+    audio.play();
+  });
 }
 
 function stopAudio(audio) {
   audio.pause();
 }
 
-const screens = document.querySelectorAll('.screen');
+const screens = document.querySelectorAll(".screen");
 
 function setCurrentScreen(index) {
   hideAllScreens();
-  screens[index].classList.add('screen_active');
+  screens[index].classList.add("screen_active");
 }
 
 function hideAllScreens() {
   screens.forEach((item) => {
-    item.classList.remove('screen_active');
+    item.classList.remove("screen_active");
   });
 }
 
-const playAgainButton = document.querySelector('.game-over-menu__play-again');
-playAgainButton.addEventListener('click', () => {
+const playAgainButton = document.querySelector(".game-over-menu__play-again");
+playAgainButton.addEventListener("click", () => {
   setCurrentScreen(1);
   location.reload();
 });
-
 
 const BEGIN_SCREEN_INDEX = 1;
 
@@ -67,15 +66,14 @@ function preload() {
 }
 
 const createUserInteractWithDocumentPromise = () => {
-  const userEvents = ['click', 'mousemove', 'keypress'];
+  const userEvents = ["click", "mousemove", "keypress"];
 
   return new Promise((resolve) => {
     userEvents.forEach((event) => {
-      this.document.addEventListener(event, resolve);
+      document.addEventListener(event, resolve);
     });
-  })
-
-}
+  });
+};
 
 function setup() {
   createUserInteractWithDocumentPromise().then(() => {
@@ -89,7 +87,7 @@ function setup() {
     initialCords: [50, window.innerHeight],
     size: FAIRY_SIZE,
     gravity: 10,
-    rangeY: [0, window.innerHeight - FAIRY_SIZE]
+    rangeY: [0, window.innerHeight - FAIRY_SIZE],
   });
   soundClassifier.classify(getVoiceCommand);
 }
@@ -100,24 +98,27 @@ function keyPressed() {
   }
 }
 
-
 function draw() {
   if (random(1) < 0.008) {
-     enemies.push(new Enemy({
-       initialCords: [window.innerWidth, random(ENEMY_SIZE, window.innerHeight + ENEMY_SIZE / 2)],
-       speed: 6 + score * 0.2,
-       size: ENEMY_SIZE
-     }));
+    enemies.push(
+      new Enemy({
+        initialCords: [
+          window.innerWidth,
+          random(ENEMY_SIZE, window.innerHeight + ENEMY_SIZE / 2),
+        ],
+        speed: 6 + score * 0.2,
+        size: ENEMY_SIZE,
+      })
+    );
   }
- 
- image(bImg,offsetX, 0, width, height);
- image(bImg,offsetX + width, 0, width, height);
 
+  image(bImg, offsetX, 0, width, height);
+  image(bImg, offsetX + width, 0, width, height);
 
- offsetX -= offsetXSpeed;
- if(offsetX <= -width){
-  offsetX = 0;	
- }
+  offsetX -= offsetXSpeed;
+  if (offsetX <= -width) {
+    offsetX = 0;
+  }
   for (let e of enemies) {
     e.move();
     e.show();
@@ -127,7 +128,6 @@ function draw() {
     }
   }
 
-  
   enemies = enemies.filter((enemy) => {
     if (enemy.x < -ENEMY_SIZE) {
       score++;
@@ -146,17 +146,18 @@ function draw() {
 function showGameOver() {
   setCurrentScreen(2);
   myfoo2();
-  
+
   noLoop();
 }
 
 function showScore() {
-  fill(45,22,200);
+  fill(45, 22, 200);
   textSize(20);
-  text('SCORE:' + score,20,25);
+  text("SCORE:" + score, 20, 25);
 }
-function myfoo2(){
-   newvar ="Your score: " + score; isid.innerHTML=newvar ; 
+function myfoo2() {
+  newvar = "Your score: " + score;
+  isid.innerHTMLm = newvar;
 }
 
 function getVoiceCommand(error, results) {

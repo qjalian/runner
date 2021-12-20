@@ -1,5 +1,5 @@
 class Enemy {
-  constructor({initialCords, speed, size}) {
+  constructor({ initialCords, speed, size }) {
     this.r = size;
     this.speed = speed;
     this.x = initialCords[0];
