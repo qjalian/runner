@@ -1,5 +1,6 @@
 class Enemy {
-  constructor({ initialCords, speed, size }) {
+  constructor({ initialCords, speed, size, p5 }) {
+    this.p5 = p5;
     this.r = size;
     this.speed = speed;
     this.x = initialCords[0];
@@ -11,6 +12,6 @@ class Enemy {
   }
 
   show() {
-    image(eImg, this.x, this.y, this.r, this.r);
+    this.p5.image(eImg, this.x, this.y, this.r, this.r);
   }
 }

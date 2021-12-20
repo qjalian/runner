@@ -1,5 +1,7 @@
 class Fairy {
-  constructor({ initialCords, gravity, size, rangeY }) {
+  constructor({ initialCords, gravity, size, rangeY, p5 }) {
+    this.p5 = p5;
+
     this.r = size;
     this.x = initialCords[0];
     this.y = initialCords[1];
@@ -18,7 +20,14 @@ class Fairy {
     let y1 = this.y + this.r * 0.25;
     let x2 = enemy.x + enemy.r * 0.25;
     let y2 = enemy.y + enemy.r * 0.25;
-    return collideCircleCircle(x1, y1, this.r * 0.5, x2, y2, enemy.r * 0.3);
+    return this.p5.collideCircleCircle(
+      x1,
+      y1,
+      this.r * 0.5,
+      x2,
+      y2,
+      enemy.r * 0.3
+    );
   }
 
   move() {
@@ -39,6 +48,6 @@ class Fairy {
   }
 
   show() {
-    image(fImg, this.x, this.y, this.r, this.r);
+    this.p5.image(fImg, this.x, this.y, this.r, this.r);
   }
 }

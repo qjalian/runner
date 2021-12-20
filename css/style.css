@@ -72,6 +72,28 @@ canvas {
   z-index: 0;
 }
 
+.play-menu {
+  background: url("../img/bgm.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+.play-menu__text {
+  margin: 0;
+  font-family: "Fruktur";
+  font-family: "Love Ya Like A Sister";
+  font-size: 100px;
+  position: absolute;
+  margin-top: 100px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(95, 36, 90);
+  cursor: pointer;
+}
+
 .screen_active {
   z-index: 100;
   opacity: 1;
