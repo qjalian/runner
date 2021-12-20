@@ -11,6 +11,7 @@ const ENEMY_SIZE = 350;
 const FAIRY_SIZE = 150;
 
 const backgroundAudio = new Audio("./audio/f.mp3");
+const gameOverAudio = new Audio("./audio/loose.mp3");
 
 function playAudio(audio) {
   audio.play();
@@ -43,6 +44,7 @@ function hideAllScreens() {
     item.classList.remove("screen_active");
   });
 }
+
 
 const playMenuButton = document.querySelector(".play-menu__text");
 playMenuButton.addEventListener("click", () => {
@@ -129,6 +131,7 @@ const game = (p5) => {
       e.show();
       if (fairy.isHits(e)) {
         stopAudio(backgroundAudio);
+        playAudio(gameOverAudio);
         showGameOver();
       }
     }
