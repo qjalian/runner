@@ -56,6 +56,7 @@ const playAgainButton = document.querySelector(".game-over-menu__play-again");
 playAgainButton.addEventListener("click", () => {
   setCurrentScreen(1);
   location.reload();
+  
 });
 
 const BEGIN_SCREEN_INDEX = 0;

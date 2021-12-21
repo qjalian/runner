@@ -34,10 +34,14 @@ canvas {
   font-family: "Love Ya Like A Sister";
   font-size: 70px;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: rgb(255, 196, 0);
+  background-color: rgb(112, 16, 99, 0.4);
+  border-radius: 20%;
+	padding: 15px;
+  box-shadow: 0 0 5px 2px;
   cursor: pointer;
 }
 .game-over-menu__score {
@@ -47,7 +51,7 @@ canvas {
   font-size: 50px;
   position: absolute;
   margin-top: 100px;
-  top: 50%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: rgb(40, 29, 134);
@@ -73,7 +77,7 @@ canvas {
 }
 
 .play-menu {
-  background: url("../img/bgm.jpg");
+  background: url("../img/play_back.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
