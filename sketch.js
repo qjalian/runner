@@ -106,7 +106,7 @@ const game = (p5) => {
   };
 
   p5.draw = () => {
-    if (p5.random(1) < 0.0089 + score / 10000) {
+    if (p5.random(1) < (0.0089 + score / 2000)) {
       enemies.push(
         new Enemy({
           initialCords: [
